@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 import java.util.Random;
+import java.util.Scanner;
 
 
 
@@ -13,36 +14,37 @@ public class Customer{
 	private String name;
 	private int id;
 	private long ph;
-	public Customer(String n,long l) {
+	public Customer() {
+		Scanner sc = new Scanner(System.in);
 		Random rand = new Random();
 		id = rand.nextInt(100);
-		name =n;
-		ph=l;
+		System.out.print("\n Enter Customer Name and Phone Number: ");
+		name =sc.next();;
+		ph=sc.nextLong();
 		try {
-			File f = new File("F:\\WT\\Java\\GitHub\\RubiconRestaurant\\CustomerRegister.txt");
+			File f = new File("CustomerRegister.txt");
 			FileWriter fw = new FileWriter(f,true);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter pw = new PrintWriter(bw);
-		    if(f.exists()==true) {
-		    	System.out.println("Customer Register file already exists!");
-		    }else {
-		    	f.createNewFile();
-		    	System.out.println("Customer Register file is created");
-		    }
-		    pw.print(id);pw.print(" "+name);pw.println(" "+l);
+		    pw.print(id);pw.print(" "+name);pw.println(" "+ph);
 		    pw.close();
-		
-	}catch(Exception e) {
-		e.printStackTrace();
+		}catch(Exception e) {
+			e.printStackTrace();
+	  }
 	}
+	public void requestMenu() {
+		System.out.println("\n Customer requests MenuCard");
 	}
 	public void orderFood() {
-		System.out.println("Customer orders Food");
+		System.out.println("\n Customer orders Food");
 	}
 	public void eatFood() {
-		System.out.println("Customer completes eating the Food");
+		System.out.println("\n Customer completes eating the Food");
 	}
-	public void payBill(double a) {
-		System.out.println("Customer pays "+a+" rupees");
+	public void requestBill() {
+		System.out.println("\n Customer requests Bill");
+	}
+	public void payBill(float a) {
+		System.out.println("\n Customer pays "+a+" rupees and Exits the Restaurant");
 	}
 }
