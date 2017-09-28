@@ -24,9 +24,9 @@ public class Manager {
 	int ch,i,q;
 	
 	public void showMenu() throws IOException,FileNotFoundException {
-		System.out.println("Please input the item No.:\n");
-		System.out.print("Starter's Menu: \n No. Dish Name  Price \n-------------------------\n");
-		BufferedReader b1 = new BufferedReader(new FileReader("F:\\WT\\Java\\GitHub\\RubiconRestaurant\\Starters.txt"));
+		System.out.println("\n Manager shows Menu Card ");
+		System.out.print("\nStarter's Menu: \n\n No. Dish Name  Price \n-------------------------\n");
+		BufferedReader b1 = new BufferedReader(new FileReader("Starters.txt"));
 		while((line=b1.readLine())!=null) {
 			System.out.println(line);
 			token = new StringTokenizer(line," ");
@@ -38,8 +38,8 @@ public class Manager {
 			table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b1.close();
-		System.out.println("\nMainCourse Menu: \n No. Dish Name  Price \n-------------------------\n");
-		BufferedReader b2 = new BufferedReader(new FileReader("F:\\WT\\Java\\GitHub\\RubiconRestaurant\\MainCourse.txt"));
+		System.out.println("\nMainCourse Menu: \n\n No. Dish Name  Price \n-------------------------\n");
+		BufferedReader b2 = new BufferedReader(new FileReader("MainCourse.txt"));
 		while((line=b2.readLine())!=null) {
 		        System.out.println(line);
 		        token = new StringTokenizer(line," ");
@@ -51,8 +51,8 @@ public class Manager {
 				table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b2.close();
-		System.out.println("\nDessert's Menu: \n No. Dish Name  Price \n-------------------------\n");
-		BufferedReader b3 = new BufferedReader(new FileReader("F:\\WT\\Java\\GitHub\\RubiconRestaurant\\Desserts.txt"));
+		System.out.println("\nDessert's Menu: \n\n No. Dish Name  Price \n-------------------------\n");
+		BufferedReader b3 = new BufferedReader(new FileReader("Desserts.txt"));
 		while((line=b3.readLine())!=null) {
 		        System.out.println(line);
 		        token = new StringTokenizer(line," ");
@@ -69,7 +69,7 @@ public class Manager {
 	
 	public void takeOrder() {
 	    ch=1;
-		System.out.println("Enter the Dish Item No. with Quantity for ordering and 0 for exit:\n");
+		System.out.println("\n Enter the Dish Item No. with Quantity for ordering and 0 for exit:\n");
 		while(ch>0) {
 			i=sc.nextInt();
 			if(i>0) {
@@ -80,10 +80,11 @@ public class Manager {
 			ch=i;
 	    }
 		System.out.println("\nOrdered Items with quantities: "+orders+" "+quantity);
+		System.out.println("\n Manager takes Order and alerts Executive chef");
 		
 	}
 	
-	public void prepareBill(){
+	public float prepareBill(){
 		int size,o,q,p;
 		Float sum=0f,v=0f;
 		size = orders.size();
@@ -92,19 +93,21 @@ public class Manager {
 			q = quantity.get(i);
 			sum = sum + ((table.get(o))*q);
 		}
-		System.out.println("Total Bill to be paid: "+sum+"rupees \n");
+		System.out.println("\n Manager handovers the Bill to the Customer.\n----------------------\n Bill : "+sum+" rupees\n----------------------");
+		return sum;
 	}
     
 	public void feedback() {
+		System.out.println("\n Manager asks for Feedback");
 		try {
-			File f = new File("F:\\WT\\Java\\GitHub\\RubiconRestaurant\\Feedback.txt");
+			File f = new File("Feedback.txt");
 			FileWriter fw = new FileWriter(f,true);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter pw = new PrintWriter(bw);
 		    if(f.exists()==false) {
 		    	f.createNewFile();
 		    }
-		    System.out.println("Customer Feedback: \n-------------------");
+		    System.out.println("\n Customer Feedback: \n-------------------\n");
 		    line = sc.next();
 		    line+=sc.nextLine();
 		    pw.println(line);
