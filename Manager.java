@@ -104,9 +104,6 @@ public class Manager {
 			FileWriter fw = new FileWriter(f,true);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter pw = new PrintWriter(bw);
-		    if(f.exists()==false) {
-		    	f.createNewFile();
-		    }
 		    System.out.println("\n Customer Feedback: \n-------------------\n");
 		    line = sc.next();
 		    line+=sc.nextLine();
