@@ -1,0 +1,12 @@
+101 Baby_Corn_Manchurian 245
+102 Veg_Manchurian 236
+103 Gobi_Manchurian 236
+104 Chilli_Paneer 245
+105 Paneer_65 245
+106 Chilli_Chicken 331
+107 Chicken_Manchurian 331
+108 Chicken_65 331
+109 Pepper_Chicken 331
+110 Apollo_Fish 383
+111 Chilli_Fish 383
+112 Golden_Fried_Prawns 404
