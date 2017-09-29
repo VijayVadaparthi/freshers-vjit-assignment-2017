@@ -16,6 +16,7 @@ import java.util.StringTokenizer;
 
 public class Manager {
 	static Hashtable<Integer,Float> table = new Hashtable<Integer,Float>();
+	static Hashtable<Integer,String> item = new Hashtable<Integer,String>();
 	ArrayList<Integer> orders = new ArrayList<Integer>();
 	ArrayList<Integer> quantity = new ArrayList<Integer>();
 	Scanner sc = new Scanner(System.in);
@@ -35,6 +36,7 @@ public class Manager {
 				token2=token.nextToken();
 				token3=token.nextToken();
 			}
+			item.put(Integer.parseInt(token1), token2);
 			table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b1.close();
@@ -48,6 +50,7 @@ public class Manager {
 					token2=token.nextToken();
 					token3=token.nextToken();
 				}
+				item.put(Integer.parseInt(token1), token2);
 				table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b2.close();
@@ -61,6 +64,7 @@ public class Manager {
 					token2=token.nextToken();
 					token3=token.nextToken();
 				}
+				item.put(Integer.parseInt(token1), token2);
 				table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b3.close();
@@ -69,7 +73,7 @@ public class Manager {
 	
 	public void takeOrder() {
 	    ch=1;
-		System.out.println("\n Enter the Dish Item No. with Quantity for ordering and 0 for exit:\n");
+		System.out.println("\n Enter the Dish Item No. with Quantity for ordering and 0 for confirm:\n");
 		while(ch>0) {
 			i=sc.nextInt();
 			if(i>0) {
@@ -85,15 +89,23 @@ public class Manager {
 	}
 	
 	public float prepareBill(){
-		int size,o,q,p;
-		Float sum=0f,v=0f;
+		int size,o,q,p,l,j;
+		Float sum=0f;
 		size = orders.size();
+		System.out.println("\n Manager handovers the Bill to the Customer\n-----------------------------------------------------------------\n Item			Quantity	Price\n-----------------------------------------------------------------");
 		for(i=0;i<size;i++) {
 			o = orders.get(i);
+			System.out.print(item.get(o));
+			l=(item.get(o)).length();
+			for(j=l;j<26;j++) {
+				System.out.print(" ");
+			}
 			q = quantity.get(i);
+			System.out.print(q+"		");
+			System.out.println((table.get(o))*q);
 			sum = sum + ((table.get(o))*q);
 		}
-		System.out.println("\n Manager handovers the Bill to the Customer.\n----------------------\n Bill : "+sum+" rupees\n----------------------");
+		System.out.println("\n----------------------\n Total Bill : "+sum+" rupees\n----------------------");
 		return sum;
 	}
     
