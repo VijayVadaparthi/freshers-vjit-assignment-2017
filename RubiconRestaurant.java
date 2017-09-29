@@ -29,6 +29,7 @@ public class RubiconRestaurant {
 	bill = mg.prepareBill();  //This is Bill section
 	c.payBill(bill);
 	mg.feedback();  //This is the Feedback section
+	c.exit();
 	bb.cleanTable();
 	bb.layoutCloth();
 	db.greeting2();
