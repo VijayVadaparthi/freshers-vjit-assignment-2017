@@ -45,6 +45,9 @@ public class Customer{
 		System.out.println("\n Customer requests Bill");
 	}
 	public void payBill(float a) {
-		System.out.println("\n Customer pays "+a+" rupees and Exits the Restaurant");
+		System.out.println("\n Customer pays "+a+" rupees");
+	}
+	public void exit() {
+		System.out.println("\n Customer leaves the Restaurant");
 	}
 }
