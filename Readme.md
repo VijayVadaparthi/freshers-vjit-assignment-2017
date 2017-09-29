@@ -6,8 +6,8 @@
 
 **Remember:** _Save all files(including .jar file) to same location. See that all your files are at one location_
 ### To run the project:
--Open command prompt and go to the location(or directory) where you have saved your files(.jar & .txt files)
--type command **java -jar RubiconRestaurant.jar** to run the project.
+- Open command prompt and go to the location(or directory) where you have saved your files(.jar & .txt files)
+- type command **java -jar RubiconRestaurant.jar** to run the project.
 
 ### Project Implementation:
 1. Customer walks-in to the Restaurant
