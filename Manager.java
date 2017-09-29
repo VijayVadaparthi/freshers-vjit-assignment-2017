@@ -24,8 +24,9 @@ public class Manager {
 	StringTokenizer token;
 	int ch,i,q;
 	
-	public void showMenu() throws IOException,FileNotFoundException {
+	public void showMenu() throws IOException,FileNotFoundException, InterruptedException {
 		System.out.println("\n Manager shows Menu Card ");
+		Thread.sleep(1500);
 		System.out.print("\nStarter's Menu: \n\n No. Dish Name  Price \n-------------------------\n");
 		BufferedReader b1 = new BufferedReader(new FileReader("Starters.txt"));
 		while((line=b1.readLine())!=null) {
@@ -40,6 +41,7 @@ public class Manager {
 			table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b1.close();
+		Thread.sleep(1500);
 		System.out.println("\nMainCourse Menu: \n\n No. Dish Name  Price \n-------------------------\n");
 		BufferedReader b2 = new BufferedReader(new FileReader("MainCourse.txt"));
 		while((line=b2.readLine())!=null) {
@@ -54,6 +56,7 @@ public class Manager {
 				table.put(Integer.parseInt(token1), Float.parseFloat(token3));
 		}
 		b2.close();
+		Thread.sleep(1500);
 		System.out.println("\nDessert's Menu: \n\n No. Dish Name  Price \n-------------------------\n");
 		BufferedReader b3 = new BufferedReader(new FileReader("Desserts.txt"));
 		while((line=b3.readLine())!=null) {
@@ -71,9 +74,9 @@ public class Manager {
 		
     }
 	
-	public void takeOrder() {
+	public void takeOrder() throws InterruptedException {
 	    ch=1;
-		System.out.println("\n Enter the Dish Item No. with Quantity for ordering and 0 for confirm:\n");
+		System.out.println("\n Manager takes Order: \n Enter the Dish Item No. with Quantity for ordering and 0 for confirm:\n");
 		while(ch>0) {
 			i=sc.nextInt();
 			if(i>0) {
@@ -83,16 +86,20 @@ public class Manager {
 			}
 			ch=i;
 	    }
+		Thread.sleep(1500);
 		System.out.println("\nOrdered Items with quantities: "+orders+" "+quantity);
-		System.out.println("\n Manager takes Order and alerts Executive chef");
+		Thread.sleep(1500);
+		System.out.println("\n Manager confirms Order and alerts Executive chef");
 		
 	}
 	
-	public float prepareBill(){
+	public float prepareBill() throws InterruptedException{
 		int size,o,q,p,l,j;
 		Float sum=0f;
 		size = orders.size();
-		System.out.println("\n Manager handovers the Bill to the Customer\n-----------------------------------------------------------------\n Item			Quantity	Price\n-----------------------------------------------------------------");
+		System.out.println("\n Manager handovers the Bill to the Customer");
+		Thread.sleep(1500);
+		System.out.println("-----------------------------------------------------------------\n Item			Quantity	Price\n-----------------------------------------------------------------");
 		for(i=0;i<size;i++) {
 			o = orders.get(i);
 			System.out.print(item.get(o));
@@ -105,7 +112,7 @@ public class Manager {
 			System.out.println((table.get(o))*q);
 			sum = sum + ((table.get(o))*q);
 		}
-		System.out.println("\n----------------------\n Total Bill : "+sum+" rupees\n----------------------");
+		System.out.println("\n----------------------------\n Total Bill : "+sum+" rupees\n----------------------------");
 		return sum;
 	}
     
@@ -116,6 +123,7 @@ public class Manager {
 			FileWriter fw = new FileWriter(f,true);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter pw = new PrintWriter(bw);
+		    Thread.sleep(1500);
 		    System.out.println("\n Customer Feedback: \n-------------------\n");
 		    line = sc.next();
 		    line+=sc.nextLine();
